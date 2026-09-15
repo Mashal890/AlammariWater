@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>شركة حسن عبدالله محمد العماري للمياه</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Tajawal:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --petrol-950:#05171A;
+    --petrol-900:#0B2E33;
+    --petrol-800:#123F45;
+    --petrol-700:#1B4E55;
+    --aqua-500:#17B8AC;
+    --aqua-300:#7FE6D8;
+    --brass-500:#C9A227;
+    --brass-300:#E4C868;
+    --sand-050:#FAF8F2;
+    --sand-100:#F1ECDE;
+    --ink:#0A1F22;
+    --line: rgba(250,248,242,0.14);
+    --display: 'Amiri', 'IBM Plex Sans Arabic', serif;
+    --body: 'Tajawal', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--sand-050); color:var(--ink); font-family:var(--body); line-height:1.7; overflow-x:hidden; width:100%;}
+  img,svg{display:block; max-width:100%; height:auto;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
+  .eyebrow{font-family:var(--mono); font-size:12.5px; letter-spacing:.14em; color:var(--aqua-500); text-transform:uppercase; display:flex; align-items:center; gap:10px;}
+  .eyebrow::before{content:""; width:26px; height:1px; background:var(--aqua-500);}
+  h1,h2,h3{font-family:var(--display); font-weight:700; letter-spacing:0;}
+
+  /* Header */
+  header{position:fixed; top:0; left:0; right:0; z-index:1000; display:flex; align-items:center; justify-content:space-between; padding:16px 24px; background:rgba(5,23,26,0.95); backdrop-filter:blur(10px); transition:all .3s ease;}
+  header.scrolled{padding:12px 24px; box-shadow:0 2px 10px rgba(0,0,0,0.3);}
+  .brand{display:flex; align-items:center; gap:12px; color:var(--sand-050); z-index:1001;}
+  .brand .mark{width:40px; height:40px; flex-shrink:0;}
+  .brand .names{display:flex; flex-direction:column; line-height:1.2;}
+  .brand .ar{font-family:var(--display); font-weight:700; font-size:19px;}
+  .brand .en{font-family:var(--mono); font-size:11px; letter-spacing:.06em; color:var(--aqua-300); text-transform:uppercase;}
+  
+  nav{display:flex; align-items:center; gap:26px;}
+  nav a{color:var(--sand-100); font-size:14.5px; opacity:.85; transition:opacity .2s, color .2s;}
+  nav a:hover{opacity:1; color:var(--aqua-300);}
+  .nav-cta{border:1px solid var(--aqua-500); color:var(--aqua-300) !important; padding:8px 18px; border-radius:4px; font-size:13.5px !important;}
+  .nav-toggle{display:none;}
+
+  /* Hero */
+  .hero{position:relative; min-height:100vh; background:radial-gradient(120% 90% at 78% 8%, var(--petrol-800), var(--petrol-950) 62%); color:var(--sand-050); display:flex; align-items:center; padding-top:130px; padding-bottom:60px; overflow:hidden;}
+  .hero-grid{position:absolute; inset:0; background-image:linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size:50px 50px; mask-image:linear-gradient(to bottom, rgba(0,0,0,.55), transparent 78%); opacity:.5;}
+  .hero-flow{position:absolute; inset:0; pointer-events:none;}
+  .hero-inner{position:relative; z-index:2; width:100%;}
+  .hero-content{max-width:760px;}
+  .hero h1{font-size:clamp(28px, 4.5vw, 56px); line-height:1.35; color:var(--sand-050); margin-bottom:20px;}
+  .hero h1 em{font-style:normal; color:var(--aqua-300);}
+  .hero p.lead{font-size:clamp(15px, 1.8vw, 17.5px); color:var(--sand-100); opacity:.85; max-width:580px; margin-bottom:32px; font-family:var(--body); line-height:1.8;}
+  
+  .cta-row{display:flex; gap:16px; flex-wrap:wrap; align-items:center;}
+  .btn{font-family:var(--body); font-weight:600; font-size:15px; padding:13px 26px; border-radius:4px; display:inline-flex; align-items:center; justify-content:center; gap:10px; transition:transform .25s ease, box-shadow .25s ease;}
+  .btn-primary{background:var(--aqua-500); color:var(--petrol-950);}
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 10px 26px -8px rgba(23,184,172,.55);}
+  .btn-ghost{border:1px solid var(--line); color:var(--sand-050);}
+  .btn-ghost:hover{border-color:var(--aqua-500); color:var(--aqua-300);}
+
+  .hero-stat {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-right: auto;
+    padding-right: 20px;
+    border-right: 1px solid rgba(250,248,242,0.2);
+  }
+  .hero-stat .stat-num {
+    font-family: var(--display);
+    font-size: 36px;
+    color: var(--brass-300);
+    font-weight: 700;
+    line-height: 1;
+    direction: ltr;
+  }
+  .hero-stat .stat-text {
+    font-family: var(--display);
+    font-size: 15px;
+    color: var(--sand-050);
+    opacity: 0.95;
+    line-height: 1.3;
+    max-width: 140px;
+  }
+
+  /* General Sections */
+  section{padding:80px 0;}
+  section.tight{padding:50px 0;}
+  .section-head{max-width:680px; margin-bottom:36px;}
+  .section-head h2{font-size:clamp(24px,3.5vw,38px); margin-top:10px; line-height:1.3;}
+  .section-head p{color:var(--petrol-800); opacity:.8; margin-top:10px; font-size:15px;}
+
+  /* Partners Top */
+  .partners{background:var(--sand-100);}
+  .partners-head{display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px; margin-bottom:26px;}
+  .partners-head p{font-size:14px; color:var(--petrol-900); opacity:.75; max-width:440px; margin-top:0;}
+  .partners-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:1px; background:rgba(10,31,34,.12); border:1px solid rgba(10,31,34,.12);}
+  .partner-cell{background:var(--sand-050); padding:16px; min-height:85px; display:flex; align-items:center; justify-content:center;}
+  .partner-cell img{max-height:44px; max-width:85%; object-fit:contain; filter:grayscale(1); opacity:.8;}
+
+  /* About */
+  .about{background:var(--sand-050);}
+  .about-grid{display:grid; grid-template-columns:0.8fr 1.2fr; gap:40px; align-items:center;}
+  .about-copy p{color:var(--petrol-900); font-size:15.5px; margin-bottom:16px; opacity:.9;}
+  .about-copy .divider-note{margin-top:20px; padding-top:16px; border-top:1px solid rgba(10,31,34,.12); display:flex; gap:12px; align-items:flex-start;}
+  .about-copy .divider-note svg{flex:none; width:22px; height:22px; margin-top:2px; color:var(--brass-500);}
+  .about-copy .divider-note p{margin:0; font-size:14.5px;}
+  .about-figure.truck-panel{background:var(--sand-100); border:1px solid rgba(10,31,34,.12); border-radius:6px; display:flex; align-items:center; justify-content:center; padding:30px;}
+  .about-figure.truck-panel img{width:50%; max-width:180px;}
+
+  /* Services */
+  .services{background:var(--petrol-950); color:var(--sand-050);}
+  .services .section-head p{color:var(--sand-100); opacity:.75;}
+  .services .eyebrow{color:var(--aqua-300);}
+  .svc-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .svc-card{background:var(--petrol-950); padding:28px 20px;}
+  .svc-card .num{font-family:var(--mono); font-size:12px; color:var(--brass-300); display:block; margin-bottom:12px;}
+  .svc-card .icon{width:30px; height:30px; color:var(--aqua-300); margin-bottom:12px;}
+  .svc-card h3{font-size:17px; color:var(--sand-050); margin-bottom:8px;}
+  .svc-card p{font-size:13.5px; color:var(--sand-100); opacity:.75; line-height:1.6;}
+  .svc-note{margin-top:1px; padding:20px 24px; background:var(--petrol-900); border:1px solid var(--line); border-top:none; display:flex; gap:14px; align-items:center; flex-wrap:wrap; justify-content:space-between;}
+  .svc-note .txt{font-size:14px; color:var(--sand-100); opacity:.9; max-width:640px;}
+  .svc-note .tag{font-family:var(--mono); font-size:11px; color:var(--brass-300); border:1px solid rgba(228,200,104,.35); padding:4px 10px; border-radius:2px;}
+
+  /* Capabilities */
+  .cap-band{background:var(--sand-100);}
+  .cap-band .section-head p{color:var(--petrol-900); opacity:.75;}
+  .cap-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:rgba(10,31,34,.14); border:1px solid rgba(10,31,34,.14);}
+  .cap-cell{background:var(--sand-050); padding:26px 18px;}
+  .cap-cell .code{font-family:var(--mono); font-size:11px; color:var(--aqua-500); display:block; margin-bottom:12px;}
+  .cap-cell .icon{width:26px; height:26px; color:var(--petrol-900); margin-bottom:12px;}
+  .cap-cell h3{font-size:16px; color:var(--petrol-950); margin-bottom:8px;}
+  .cap-cell p{font-size:13px; color:var(--petrol-900); opacity:.75; line-height:1.6;}
+
+  /* Showcase Logos */
+  .projects{background:var(--sand-100); position:relative;}
+  .projects .section-head{max-width:100%; text-align:center; margin:0 auto 36px; display:flex; flex-direction:column; align-items:center;}
+  .projects .eyebrow{justify-content:center;}
+  .projects .eyebrow::before{display:none;}
+  .projects .section-head h2{font-size:clamp(22px,2.5vw,28px);}
+  .partners-showcase {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 20px;
+    align-items: center;
+    justify-items: center;
+  }
+  .partner-logo-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 70px;
+    padding: 8px;
+    background: var(--sand-050);
+    border: 1px solid rgba(10,31,34,0.06);
+    border-radius: 4px;
+  }
+  .partner-logo-item img {
+    max-height: 46px;
+    max-width: 100%;
+    object-fit: contain;
+  }
+
+  /* Contact Section */
+  .contact-cta{background:linear-gradient(135deg, var(--petrol-800), var(--petrol-950)); color:var(--sand-050); overflow:hidden;}
+  .contact-cta-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:40px; align-items:center;}
+  .contact-cta h2{font-size:clamp(24px,3vw,32px); color:var(--sand-050); margin-bottom:10px;}
+  .contact-cta .lead{font-size:15px; color:var(--sand-100); opacity:.8; margin-bottom:24px;}
+  .cta-row3{display:grid; grid-template-columns:repeat(3, 1fr); gap:12px; margin-bottom:12px;}
+  .contact-cta input, .contact-cta textarea{background:var(--sand-100); border:1px solid rgba(10,31,34,.12); color:var(--petrol-950); font-family:var(--body); font-size:14px; padding:13px 15px; border-radius:4px; outline:none; width:100%;}
+  .contact-cta input::placeholder, .contact-cta textarea::placeholder{color:var(--petrol-900); opacity:.6;}
+  .contact-cta textarea{min-height:100px; resize:vertical; margin-bottom:14px; font-family:var(--body); display:block;}
+  .cta-submit{font-family:var(--body); font-weight:700; font-size:15px; padding:14px 24px; border-radius:4px; background:var(--aqua-500); color:var(--petrol-950); border:none; cursor:pointer; width:100%;}
+  .cta-social{display:flex; gap:12px; margin:20px 0 16px;}
+  .cta-social a{width:38px; height:38px; border-radius:50%; border:1px solid var(--line); display:flex; align-items:center; justify-content:center; color:var(--sand-050);}
+  .cta-social a:hover{background:var(--aqua-500); color:var(--petrol-950); border-color:var(--aqua-500);}
+  .cta-social svg{width:16px; height:16px;}
+  .cta-info-row{display:flex; gap:20px; flex-wrap:wrap; margin-bottom:12px;}
+  .cta-info-row a{display:flex; align-items:center; gap:8px; font-family:var(--mono); font-size:13.5px; color:var(--sand-100); direction:ltr;}
+  .cta-info-row svg{width:16px; height:16px; color:var(--aqua-300);}
+  .cta-address{display:flex; align-items:center; gap:8px; font-size:13.5px; color:var(--sand-100); opacity:.85;}
+  .cta-address svg{width:16px; height:16px; color:var(--aqua-300); flex:none;}
+  .contact-cta-brand{display:flex; flex-direction:column; align-items:flex-end; text-align:left;}
+  .contact-cta-brand .mark-big{width:70px; height:70px; margin-bottom:12px;}
+  .contact-cta-brand .name-big{font-family:var(--display); font-weight:700; font-size:clamp(22px,3vw,34px); color:var(--sand-050); line-height:1.3;}
+  .contact-cta-brand .name-en{font-family:var(--mono); font-size:11.5px; letter-spacing:.08em; color:var(--aqua-300); opacity:.85; text-transform:uppercase; margin-top:6px;}
+
+  /* Footer */
+  footer{background:var(--petrol-950); border-top:1px solid var(--line); padding:50px 0 24px; color:var(--sand-100);}
+  .footer-grid{display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:36px; padding-bottom:26px; border-bottom:1px solid var(--line); margin-bottom:18px;}
+  .footer-col h4{font-family:var(--display); font-weight:600; font-size:15px; color:var(--sand-050); margin-bottom:14px;}
+  .footer-col .brand-line{display:flex; align-items:center; gap:10px; margin-bottom:12px;}
+  .footer-col .brand-line svg{width:24px; height:24px;}
+  .footer-col p, .footer-col a{display:block; font-size:13.5px; color:var(--sand-100); opacity:.7; margin-bottom:8px;}
+  .foot-row{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; font-size:12px; opacity:.6;}
+
+  /* -------------------------------------------
+     Mobile & Tablet Responsive Fixes
+  -------------------------------------------- */
+  @media (max-width: 991px){
+    header{padding:14px 18px;}
+    .brand .ar{font-size:16px;}
+    .brand .en{font-size:10px;}
+    
+    /* إصلاح منيو الجوال للغة العربية RTL */
+    nav{
+      position:fixed; 
+      top:0;
+      right:0;
+      bottom:0;
+      width:260px; 
+      height:100vh;
+      background:var(--petrol-950); 
+      flex-direction:column; 
+      align-items:flex-start; 
+      padding:85px 24px 30px; 
+      gap:18px; 
+      transform:translateX(100%); 
+      transition:transform .3s ease-in-out; 
+      box-shadow:-5px 0 25px rgba(0,0,0,.6);
+      z-index:999;
+    }
+    nav.open{transform:translateX(0);}
+    .nav-toggle{
+      display:flex; 
+      flex-direction:column; 
+      justify-content:center;
+      gap:5px; 
+      background:none; 
+      border:none; 
+      cursor:pointer; 
+      z-index:1001;
+      padding:6px;
+    }
+    .nav-toggle span{width:22px; height:2px; background:var(--sand-050); border-radius:2px;}
+
+    .hero{padding-top:110px; padding-bottom:45px; min-height:auto;}
+    .about-grid{grid-template-columns:1fr; gap:28px;}
+    .svc-grid{grid-template-columns:repeat(2, 1fr);}
+    .cap-grid{grid-template-columns:repeat(2, 1fr);}
+    .contact-cta-grid{grid-template-columns:1fr; gap:32px;}
+    .contact-cta-brand{align-items:flex-start; text-align:right;}
+    .footer-grid{grid-template-columns:1fr; gap:26px;}
+  }
+
+  @media (max-width: 640px){
+    .wrap{padding:0 16px;}
+    section{padding:50px 0;}
+    section.tight{padding:35px 0;}
+    
+    .hero{padding-top:95px; padding-bottom:40px;}
+    .hero h1{font-size:25px; line-height:1.4;}
+    .hero p.lead{font-size:14px; margin-bottom:22px; line-height:1.7;}
+    
+    .cta-row{flex-direction:column; align-items:stretch; gap:10px;}
+    .btn{width:100%; padding:12px 20px;}
+    
+    .hero-stat{
+      margin:12px 0 0 0; 
+      padding:14px 0 0 0; 
+      border-right:none; 
+      border-top:1px solid rgba(250,248,242,0.15);
+      width:100%;
+      justify-content:flex-start;
+    }
+    .hero-stat .stat-num{font-size:30px;}
+    .hero-stat .stat-text{font-size:13px;}
+
+    .svc-grid, .cap-grid{grid-template-columns:1fr;}
+    .cta-row3{grid-template-columns:1fr; gap:10px;}
+    .cta-info-row{flex-direction:column; gap:8px; align-items:flex-start;}
+    .partners-showcase{grid-template-columns:repeat(2, 1fr); gap:12px;}
+    .partners-grid{grid-template-columns:repeat(2, 1fr);}
+    
+    .about-figure.truck-panel{padding:20px;}
+    .about-figure.truck-panel img{width:40%;}
+  }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="brand">
+    <svg class="mark" viewBox="0 0 40 40" fill="none">
+      <path d="M20 3C20 3 8 18.5 8 26.5C8 33.4 13.4 38 20 38C26.6 38 32 33.4 32 26.5C32 18.5 20 3 20 3Z" fill="url(#g1)"/>
+      <defs><linearGradient id="g1" x1="8" y1="3" x2="32" y2="38" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#7FE6D8"/><stop offset="1" stop-color="#17B8AC"/>
+      </linearGradient></defs>
+    </svg>
+    <div class="names">
+      <span class="ar">شركة العماري للمياه</span>
+      <span class="en">AlAmmari For Water CO.</span>
+    </div>
+  </div>
+  <nav id="siteNav">
+    <a href="#about">الشركة</a>
+    <a href="#services">خدماتنا</a>
+    <a href="#capabilities">قدراتنا الفنية</a>
+    <a href="#projects">شركاء النجاح</a>
+    <a href="#contact" class="nav-cta">تواصل معنا</a>
+  </nav>
+  <button class="nav-toggle" id="navToggle" aria-label="القائمة"><span></span><span></span><span></span></button>
+</header>
+
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="wrap hero-inner">
+    <div class="hero-content">
+      <h1>شريككم الموثوق في <em>توريد المياه</em><br>لأكبر المشاريع في الرياض</h1>
+      <p class="lead">شركة متخصصة في تعبئة وتوريد المياه بجميع أنواعها — من المياه العذبة عالية الجودة إلى مياه الشرب والخرسانات وري المزروعات — بأسطول ناقلات مرخّص وجاهزية تامة على مدار الساعة.</p>
+      
+      <div class="cta-row">
+        <a href="#contact" class="btn btn-primary">
+          تواصل مع المبيعات
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 8l4 4-4 4M3 12h18"/></svg>
+        </a>
+        <a href="#projects" class="btn btn-ghost">شركاء النجاح</a>
+        
+        <div class="hero-stat">
+          <span class="stat-num">+50</span>
+          <span class="stat-text">عقود توريد وتعبئة سارية</span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<section class="partners tight">
+  <div class="wrap">
+    <div class="partners-head">
+      <div>
+        <div class="eyebrow">من عملائنا</div>
+        <h2 style="color:var(--petrol-950);">جهات نفتخر بخدمتها</h2>
+      </div>
+      <p>جزء من شركائنا في النجاح من القطاعين الحكومي والخاص بمدينة الرياض.</p>
+    </div>
+    <div class="partners-grid">
+      <div class="partner-cell"><img src="logo-01.png" alt="جامعة الملك سعود"></div>
+      <div class="partner-cell"><img src="logo-02.png" alt="وزارة الخارجية"></div>
+      <div class="partner-cell"><img src="logo-03.png" alt="الديوان الملكي"></div>
+      <div class="partner-cell"><img src="logo-04.png" alt="ائتلاف قطار الرياض"></div>
+      <div class="partner-cell"><img src="logo-05.png" alt="بوابة الدرعية"></div>
+      <div class="partner-cell"><img src="logo-06.png" alt="مطارات الرياض"></div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-figure truck-panel">
+      <img src="water-drop-icon.png" alt="شعار قطرة الماء">
+    </div>
+    <div class="about-copy">
+      <div class="eyebrow" style="color:var(--petrol-950)">نبذة عن الشركة</div>
+      <h2 style="margin-top:12px; margin-bottom:16px; color:var(--petrol-950)">تخصص دقيق في تعبئة وتوريد المياه بجميع صورها</h2>
+      <p>نحن شركة حسن عبدالله محمد العماري للمياه، شركة سعودية متخصصة في مجال تعبئة وتوريد المياه بجميع أنواعها: مياه عذبة عالية الجودة، مياه صالحة للشرب، مياه خرسانات، ومياه ري للمزروعات.</p>
+      <p>يشرفنا تقديم تلك الخدمات لأكبر المشاريع التنموية والإنشائية في مدينة الرياض بأعلى معايير الالتزام والجودة.</p>
+      <div class="divider-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>
+        <p>يوجد لدينا فرع متخصص في حاويات النفايات وأعمال الهدم والبناء والمكابس للأحياء والمجمعات.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">خدماتنا</div>
+      <h2>مياه لكل استخدام، بمواصفات مطابقة</h2>
+      <p>نغطي احتياجات المشاريع الإنشائية والزراعية والسكنية من مصدر واحد موثوق.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <span class="num">01</span>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22V12M12 12c0-4-3-6-7-6 0 4 3 6 7 6zM12 12c0-5 3-8 8-8 0 5-3 8-8 8z"/></svg>
+        <h3>مياه ري المزروعات</h3>
+        <p>للمزروعات الرقيقة والعادية، بكميات تناسب المشاريع والمسطحات الخضراء.</p>
+      </div>
+      <div class="svc-card">
+        <span class="num">02</span>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="10" width="18" height="10" rx="1"/><path d="M7 10V6a5 5 0 0110 0v4"/></svg>
+        <h3>مياه خرسانات</h3>
+        <p>توريد مستمر ومنتظم لمواقع الإنشاء ومصانع المقاولات الكبرى.</p>
+      </div>
+      <div class="svc-card">
+        <span class="num">03</span>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2h12v6l-4 4v8a2 2 0 01-4 0v-8L6 8V2z"/></svg>
+        <h3>مياه صالحة للشرب</h3>
+        <p>مرخّصة من وزارة البيئة والمياه والزراعة ومعتمدة وفق الاشتراطات الصحية.</p>
+      </div>
+      <div class="svc-card">
+        <span class="num">04</span>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2c0 0-7 9-7 13.5A7 7 0 0012 22a7 7 0 007-6.5C19 11 12 2 12 2z"/></svg>
+        <h3>مياه عذبة عالية الجودة</h3>
+        <p>مياه نقية مطابقة للمواصفات لمختلف الاستخدامات الصناعية والتشغيلية.</p>
+      </div>
+    </div>
+    <div class="svc-note">
+      <p class="txt">فرع متخصص في حاويات النفايات وأعمال الهدم والبناء، إضافة إلى مكابس النفايات للمكاتب والأحياء السكنية.</p>
+      <span class="tag">إدارة النفايات والبناء</span>
+    </div>
+  </div>
+</section>
+
+<section class="cap-band" id="capabilities">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">القدرات الفنية</div>
+      <h2 style="color:var(--petrol-950)">جاهزية تشغيلية على مدار المشروع</h2>
+    </div>
+    <div class="cap-grid">
+      <div class="cap-cell">
+        <span class="code">01</span>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="7" width="15" height="10" rx="1"/><path d="M16 10h4l3 3v4h-7z"/><circle cx="5.5" cy="19.5" r="1.5"/><circle cx="18.5" cy="19.5" r="1.5"/></svg>
+        <h3>أسطول ناقلات مرخّص</h3>
+        <p>ناقلات مياه صالحة للشرب مرخصة ومعتمدة، وأخرى مخصصة للأعمال غير الصالحة للشرب.</p>
+      </div>
+      <div class="cap-cell">
+        <span class="code">02</span>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        <h3>نقاط تعبئة متعددة</h3>
+        <p>أشياب مركزية ونقاط تعبئة مجهزة تضمن التدفق المستمر دون انقطاع.</p>
+      </div>
+      <div class="cap-cell">
+        <span class="code">03</span>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 9v4M12 17h.01M10.3 3.86l-8.14 14A2 2 0 004 21h16a2 2 0 001.84-3.14l-8.14-14a2 2 0 00-3.4 0z"/></svg>
+        <h3>إدارة الأزمات والمخاطر</h3>
+        <p>جاهزية فنية للتعامل مع متطلبات الطوارئ وضمان استمرارية التوريد.</p>
+      </div>
+      <div class="cap-cell">
+        <span class="code">04</span>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 21V9l8-6 8 6v12M9 21v-6h6v6"/></svg>
+        <h3>محطات تحلية بإشراف كامل</h3>
+        <p>إدارة وتشغيل محطات التحلية في الرياض مع طواقم الصيانة المتخصصة.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="projects" id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">شركاء النجاح</div>
+      <h2>عملاؤنا الكرام</h2>
+    </div>
+    
+    <div class="partners-showcase">
+      <div class="partner-logo-item"><img src="99528cf8-7440-4a22-a606-97b028dddd0a.png" alt="شعار"></div>
+      <div class="partner-logo-item"><img src="ebcffeb8-5b5d-4e8d-b211-427691dc40e3.png" alt="شعار"></div>
+      <div class="partner-logo-item"><img src="721be7df-497f-4cfa-a182-41440db59b1d.png" alt="شعار"></div>
+      <div class="partner-logo-item"><img src="d661155c-808c-4ba6-8440-6079a4334787.png" alt="شعار"></div>
+      <div class="partner-logo-item"><img src="7260f565-ed0a-41dd-96e7-7435b37fb5bd.png" alt="شعار"></div>
+      <div class="partner-logo-item"><img src="19218f16-5f2f-4330-96ad-0032161ae2d9.png" alt="شعار"></div>
+      <div class="partner-logo-item"><img src="7a8950f9-9bb9-480a-87a2-de19ad73495b.jpg" alt="شعار"></div>
+      <div class="partner-logo-item"><img src="1cb7dbc8-9d62-4e9b-a096-f1297c716349.png" alt="شعار"></div>
+      <div class="partner-logo-item"><img src="9385b88f-d51a-4a2f-806c-ee70bba63837.png" alt="شعار"></div>
+      <div class="partner-logo-item"><img src="cecb4b18-1fe9-43f5-b7d2-260f89415d61.png" alt="شعار"></div>
+      <div class="partner-logo-item"><img src="assets/salco.png" alt="سالكو"></div>
+      <div class="partner-logo-item"><img src="assets/china-harbour.jpg" alt="China Harbour"></div>
+      <div class="partner-logo-item"><img src="assets/mas.jpg" alt="ماس للهندسة والانشاء"></div>
+      <div class="partner-logo-item"><img src="assets/jash.jpg" alt="جاش للخدمات الفنية"></div>
+      <div class="partner-logo-item"><img src="assets/lynx.jpg" alt="Lynx"></div>
+      <div class="partner-logo-item"><img src="assets/nemow.jpg" alt="نمو اعمال للتشغيل والصيانة"></div>
+      <div class="partner-logo-item"><img src="assets/roshn.png" alt="مجموعة روشن"></div>
+      <div class="partner-logo-item"><img src="assets/moi.jpg" alt="المديرية العامة لمكافحة المخدرات"></div>
+      <div class="partner-logo-item"><img src="assets/prisons.webp" alt="المديرية العامة للسجون"></div>
+      <div class="partner-logo-item"><img src="assets/sahara.png" alt="صحاري للمقاولات والإنشاءات"></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-cta" id="contact">
+  <div class="wrap contact-cta-grid">
+    <div class="contact-cta-form">
+      <h2>تواصل معنا</h2>
+      <p class="lead">نسعد بخدمتكم وتلبية متطلبات مشاريعكم بكل كفاءة.</p>
+
+      <form id="ctaForm">
+        <div class="cta-row3">
+          <input type="text" id="ctaName" placeholder="الاسم" required>
+          <input type="tel" id="ctaPhone" placeholder="الهاتف" required>
+          <input type="email" id="ctaEmail" placeholder="البريد الإلكتروني" required>
+        </div>
+        <textarea id="ctaMessage" placeholder="تفاصيل الطلب أو الاستفسار"></textarea>
+        <button type="submit" class="cta-submit">إرسال الطلب</button>
+      </form>
+
+      <div class="cta-social">
+        <a href="tel:0542707073" aria-label="اتصال">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.4 2.1L8 9.9a16 16 0 006 6l1.4-1.3a2 2 0 012.1-.4c.9.3 1.8.5 2.7.6a2 2 0 011.8 2z"/></svg>
+        </a>
+        <a href="https://wa.me/966542707073" aria-label="واتساب" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.44 1.29 4.87L2 22l5.31-1.39a9.9 9.9 0 004.73 1.2h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.79 14.02c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.13.11-1.82-.11-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.79-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.18.01.42-.07.65.5.24.58.82 2 .89 2.15.07.15.12.32.02.51-.1.19-.15.31-.3.48-.15.17-.31.38-.44.51-.15.14-.3.3-.13.58.17.29.76 1.25 1.63 2.02 1.12 1 2.06 1.31 2.35 1.46.29.15.46.13.63-.08.17-.21.71-.83.9-1.11.19-.29.38-.24.63-.14.26.1 1.65.78 1.93.92.29.14.48.21.55.33.07.12.07.68-.17 1.36z"/></svg>
+        </a>
+        <a href="mailto:info@ammariwater.com" aria-label="بريد إلكتروني">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7l9 6 9-6M3 7v10h18V7"/></svg>
+        </a>
+      </div>
+
+      <div class="cta-info-row">
+        <a href="tel:0542707073">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.4 2.1L8 9.9a16 16 0 006 6l1.4-1.3a2 2 0 012.1-.4c.9.3 1.8.5 2.7.6a2 2 0 011.8 2z"/></svg>
+          +966 54 270 7073
+        </a>
+        <a href="mailto:info@ammariwater.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7l9 6 9-6M3 7v10h18V7"/></svg>
+          info@ammariwater.com
+        </a>
+      </div>
+
+      <div class="cta-address">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        الرياض، المملكة العربية السعودية
+      </div>
+    </div>
+
+    <div class="contact-cta-brand">
+      <svg class="mark-big" viewBox="0 0 40 40" fill="none">
+        <path d="M20 3C20 3 8 18.5 8 26.5C8 33.4 13.4 38 20 38C26.6 38 32 33.4 32 26.5C32 18.5 20 3 20 3Z" fill="var(--sand-050)"/>
+      </svg>
+      <div class="name-big">العماري للمياه</div>
+      <div class="name-en">AlAmmari For Water Co.</div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  const navToggle = document.getElementById('navToggle');
+  const siteNav = document.getElementById('siteNav');
+  
+  navToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    siteNav.classList.toggle('open');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!siteNav.contains(e.target) && !navToggle.contains(e.target)) {
+      siteNav.classList.remove('open');
+    }
+  });
+
+  siteNav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => siteNav.classList.remove('open'));
+  });
+</script>
+</body>
+</html>
